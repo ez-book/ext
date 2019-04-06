@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "EZ Book",
+  "version": "0.1",
+  "description": "Generate trip itineraries from blog articles",
+  "icons": {
+    "48": "icons/logo-48.png",
+    "96": "icons/logo-96.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "https://example.com/*"
+  ],
+  "background": {
+    "scripts": ["background/request.js"]
+  },
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": {
+      "16": "icons/logo-16.png",
+      "32": "icons/logo-32.png"
+    },
+    "default_title": "EZ Book",
+    "default_popup": "popup/index.html",
+    "theme_icons": [
+      {
+        "light": "icons/logo-16-light.png",
+        "dark": "icons/logo-16.png",
+        "size": 16
+      },
+      {
+        "light": "icons/logo-32-light.png",
+        "dark": "icons/logo-32.png",
+        "size": 32
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": [
+        "content/compromise.js",
+        "content/parse.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
