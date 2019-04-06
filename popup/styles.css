@@ -1,0 +1,37 @@
+/* -- HEADER -- */
+header {
+  
+}
+  header .title {
+
+  }
+
+/* -- MAIN -- */
+main {
+
+}
+  main p {
+
+  }
+    main p .current-page {
+
+    }
+
+/* -- FOOTER -- */
+footer {
+
+}
+  footer button {
+
+  }
+    footer button.main-action {
+
+    }
+    footer button.secondary-action {
+
+    }
+
+/* -- GLOBALS -- */
+.hidden {
+  display: none;
+}
