@@ -11,8 +11,7 @@
     "activeTab",
     "tabs",
     "webRequest",
-    "webRequestBlocking",
-    "https://example.com/*"
+    "webRequestBlocking"
   ],
   "background": {
     "scripts": ["background/request.js"]

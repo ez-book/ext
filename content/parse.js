@@ -1,6 +1,7 @@
 const content = (document.querySelector("main") || document.body).innerHTML;
 const text =
   new DOMParser().parseFromString(content, "text/html").body.textContent || "";
+console.log('parse');
 console.log({ text });
 
 browser.runtime.onMessage.addListener(message => {
@@ -8,8 +9,8 @@ browser.runtime.onMessage.addListener(message => {
   if ((message.type = "generate")) {
     const places = nlp(text)
       .places()
-      .data();
-    // .out("topk");
+      // .data();
+      .out("topk");
     console.log({ places });
 
     // Send a request to save the itinerary

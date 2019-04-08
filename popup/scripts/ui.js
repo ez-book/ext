@@ -8,7 +8,12 @@ const $button = {
 // UI = f(state)
 const ui = {
   loading: state => {
-    $main.innerHTML = `Loading ...`;
+    $main.innerHTML = `
+      <div class='loading'>
+        <div id="loading-pin"></div>
+        <div id="loading-shadow"></div>
+      </div>
+    `;
     $button.primary.classList.add("hidden");
     $button.secondary.classList.add("hidden");
   },
@@ -19,25 +24,32 @@ const ui = {
   },
   generate: state => {
     $button.primary.classList.remove("hidden");
-    $button.primary.classList.remove("book");
-    $button.primary.classList.add("generate");
-    $button.primary.innerText = "Generate";
+    $button.primary.innerHTML = `
+      <span class='generate'>
+        Generate
+      </span>
+    `;
 
     // For testing purposes
-    $main.innerHTML = state.text;
+    $main.innerHTML = `<p>${state.text}</p>`;
   },
   book: state => {
     $button.primary.classList.remove("hidden");
-    $button.primary.classList.remove("generate");
-    $button.primary.classList.add("book");
-    $button.primary.innerText = "Book";
+    $button.primary.innerHTML = `
+      <span class='book'>
+        Search
+      </span>
+    `;
 
     $button.secondary.classList.remove("hidden");
-    $button.secondary.classList.add("share");
-    $button.secondary.innerText = "Share";
+    $button.secondary.innerHTML = `
+      <span class='share'>
+        Share
+      </span>
+    `;
 
     // For testing purposes
-    $main.innerHTML = state.text;
+    $main.innerHTML = `<p>${state.text}</p>`;
   }
 };
 

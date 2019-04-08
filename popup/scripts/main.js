@@ -1,4 +1,4 @@
-// Barebones redux architecture implementation
+// Barebones Redux architecture implementation
 const createStore = (initialState = {}, reducer) => {
   let state = initialState;
   return {
@@ -21,7 +21,7 @@ store.dispatch({ type: "LOADING" });
 browser.runtime.sendMessage({
   type: "request",
   method: "GET",
-  ressource: "/itinerary/url"
+  resource: "/itinerary/url"
 });
 
 // Attaching event listener for messages between 

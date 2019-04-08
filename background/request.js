@@ -2,7 +2,7 @@ console.log("request");
 browser.tabs
   .query({ currentWindow: true, active: true })
   .then(tabs => {
-    const { url, id } = tabs[0];
+    const { url } = tabs[0];
     console.log({ url });
     // Make a request to the backend to fetch the itinerary if it has
     // already been parsed previously

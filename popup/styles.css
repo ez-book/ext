@@ -1,37 +1,183 @@
-/* -- HEADER -- */
-header {
-  
+/* -- VARIABLES -- */
+:root {
+  --color-primary: #003580;
+  --color-secondary: #009FE3;
+  --color-complementary: #FABE02;
+  --color-grey: #7C90A6;
+  --color-black: #1C1C1C;
+  --color-white: #F1F1F1;
+
+  --body-min-widget: 300px;
 }
-  header .title {
-
-  }
-
-/* -- MAIN -- */
-main {
-
-}
-  main p {
-
-  }
-    main p .current-page {
-
-    }
-
-/* -- FOOTER -- */
-footer {
-
-}
-  footer button {
-
-  }
-    footer button.main-action {
-
-    }
-    footer button.secondary-action {
-
-    }
 
 /* -- GLOBALS -- */
 .hidden {
   display: none;
 }
+
+/* -- BODY -- */
+body {
+  min-width: var(--body-min-widget);
+}
+
+/* -- HEADER -- */
+header {
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 0px;
+  color: var(--color-black);
+}
+  header .title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+/* -- MAIN -- */
+main {
+  padding: 8px;
+  font-size: 14px;
+  color: var(--color-grey);
+}
+  main p {
+    margin: 0;
+  }
+
+  /* LOADING BY Basti (https://codepen.io/basti_s/pen/ZbEZpE) */
+  main .loading {
+
+  }
+    main .loading #loading-pin {
+      background-color: var(--color-primary);
+      width: 30px;
+      height: 30px;
+      transform: rotate(-45deg);
+      border-radius: 80px 80px 80px 0;
+      margin-bottom: 10px;
+      animation: bounce 1s infinite;
+      left: 50%;
+      margin: 16px auto 0;
+    }
+      main .loading #loading-pin:after {
+        border-radius: 50px;
+        content: '';
+        height: 6px;
+        left: 50%;        
+        margin-left: -3px;
+        margin-top: -3px;
+        position: absolute;
+        top: 50%;
+        background-color: var(--color-white);
+        width: 6px;
+      }
+  
+    main .loading #loading-shadow {
+      background-color: var(--color-grey);
+      width: 30px;
+      height: 30px;
+      border-radius: 80px;
+      margin-bottom: 30px;
+      animation: bounce-shadow 1s infinite;
+      margin: -5px auto 0;
+    }
+  
+    @keyframes bounce {
+      0% {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+      40% {
+        filter: none;
+        transform: translateY(0px) rotate(-45deg);
+      }
+      100% {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+    }
+  
+    @keyframes bounce-shadow {
+      0% {
+        transform: rotateX(70deg) scale(0.5);
+      }
+      40% {
+        filter: none;
+        transform: rotateX(80deg) scale(0.2);
+      }
+      100% {
+        transform: rotateX(70deg) scale(0.5);
+      }
+    }
+  /* END LOADING */  
+
+/* -- FOOTER -- */
+footer {
+  padding: 8px;
+  padding-bottom: 12px;
+  padding-top: 0px;
+
+  display: flex;
+  align-content: space-between;
+}
+  /* BUTTON BY Sébastien Jean (https://codepen.io/sebj54/pen/oxluI/) */
+  footer button {
+    position: relative;  
+    display: block;
+    margin: 0px auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    color: var(--color-white);
+    transition: background-color .3s;
+  }
+
+  footer button > * {
+    position: relative;
+  }
+  
+    footer button span {
+      display: block;
+      padding: 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  
+    footer button:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 0;
+      padding-top: 0;
+      border-radius: 100%;
+      background-color: rgba(236, 240, 241, .3);
+      transform: translate(-50%, -50%);
+    }
+  
+    footer button:active:before {
+      width: 120%;
+      padding-top: 120%;
+      transition: width .2s ease-out, padding-top .2s ease-out;
+    }
+  /* END BUTTON */
+
+    footer button.main-action {
+      flex-grow: 2;
+      background-color: var(--color-primary);
+    }
+      footer button.main-action:hover,
+      footer button.main-action:focus {
+        background-color: var(--color-primary);
+      }
+    footer button.secondary-action {
+      flex-grow: 1;
+      margin-left: 8px;
+      background-color: var(--color-complementary);
+    }
+      footer button.secondary-action:hover,
+      footer button.secondary-action:focus {
+        background-color: var(--color-complementary);
+      }
