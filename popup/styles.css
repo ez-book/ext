@@ -7,7 +7,7 @@
   --color-black: #1C1C1C;
   --color-white: #F1F1F1;
 
-  --body-min-widget: 300px;
+  --body-widget: 300px;
 }
 
 /* -- GLOBALS -- */
@@ -17,7 +17,7 @@
 
 /* -- BODY -- */
 body {
-  min-width: var(--body-min-widget);
+  width: var(--body-widget);
 }
 
 /* -- HEADER -- */

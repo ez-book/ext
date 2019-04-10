@@ -9,21 +9,15 @@ browser.runtime.onMessage.addListener(message => {
   if ((message.type = "generate")) {
     const places = nlp(text)
       .places()
-      // .data();
-      .out("topk");
+      .out("topk")
+      .map(place => place.normal);
     console.log({ places });
 
     // Send a request to save the itinerary
-    // TODO
-
-    // Send a message back to the popup with the itinerary link
     browser.runtime.sendMessage({
-      type: "SUCCESS",
-      payload: {
-        generate: false,
-        book: true,
-        itineraryURL: "" // TODO
-      }
+      type: "POST",
+      resource: "/itinerary",
+      places: JSON.stringify(places.slice(0, 5)),
     });
   }
 });

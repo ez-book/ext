@@ -10,8 +10,7 @@
   "permissions": [
     "activeTab",
     "tabs",
-    "webRequest",
-    "webRequestBlocking"
+    "webRequest"
   ],
   "background": {
     "scripts": ["background/request.js"]

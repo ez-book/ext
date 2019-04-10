@@ -19,8 +19,7 @@ const store = createStore(
 // Initial state when opening the popup
 store.dispatch({ type: "LOADING" });
 browser.runtime.sendMessage({
-  type: "request",
-  method: "GET",
+  type: "GET",
   resource: "/itinerary/url"
 });
 
