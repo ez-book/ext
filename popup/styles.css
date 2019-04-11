@@ -39,9 +39,25 @@ main {
   font-size: 14px;
   color: var(--color-grey);
 }
-  main p {
+  main .text {
     margin: 0;
   }
+  main .list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+    main .list .place {
+      margin: 4px 0;
+      padding: 8px;
+      width: 100%;
+      border: 1px solid var(--color-grey);
+      text-transform: capitalize;
+    }
+      main .list .place .place-name {
+        display: block;
+        width: 100%;
+      }
 
   /* LOADING BY Basti (https://codepen.io/basti_s/pen/ZbEZpE) */
   main .loading {

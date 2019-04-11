@@ -20,7 +20,7 @@ const store = createStore(
 store.dispatch({ type: "LOADING" });
 browser.runtime.sendMessage({
   type: "GET",
-  resource: "/itinerary/url"
+  resource: "/itinerary"
 });
 
 // Attaching event listener for messages between 

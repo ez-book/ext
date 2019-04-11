@@ -40,7 +40,7 @@
     {
       "matches": ["*://*/*"],
       "js": [
-        "content/compromise.js",
+        "content/lib/compromise.js",
         "content/parse.js"
       ],
       "run_at": "document_idle"

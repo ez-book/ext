@@ -1,39 +1,50 @@
 // Define DOM elements
-const $main = document.getElementById("main");
+const $main = document.querySelector("main");
+const $loading = document.querySelector(".loading");
+const $text = document.querySelector(".text");
+const $list = document.querySelector(".list");
 const $button = {
-  primary: document.getElementById("primary"),
-  secondary: document.getElementById("secondary")
+  primary: document.querySelector("#primary"),
+  secondary: document.querySelector("#secondary")
 };
 
 // UI = f(state)
 const ui = {
-  loading: state => {
-    $main.innerHTML = `
-      <div class='loading'>
-        <div id="loading-pin"></div>
-        <div id="loading-shadow"></div>
-      </div>
-    `;
+  loading: _ => {
+    $loading.classList.remove("hidden");
+    $text.innerText = "";
+    $list.innerHTML = "";
     $button.primary.classList.add("hidden");
     $button.secondary.classList.add("hidden");
   },
-  error: state => {
-    $main.innerHTML = `Error!`;
+  error: ({ text }) => {
+    $loading.classList.add("hidden");
+    $text.innerText = text;
+    $list.innerHTML = "";
     $button.primary.classList.add("hidden");
     $button.secondary.classList.add("hidden");
   },
-  generate: state => {
+  generate: ({ text }) => {
+    $loading.classList.add("hidden");
+    $text.innerText = text;
+    $list.innerHTML = "";
     $button.primary.classList.remove("hidden");
     $button.primary.innerHTML = `
       <span class='generate'>
         Generate
       </span>
     `;
-
-    // For testing purposes
-    $main.innerHTML = `<p>${state.text}</p>`;
   },
-  book: state => {
+  book: ({ text, data }) => {
+    $loading.classList.add("hidden");
+    $text.innerText = text;
+    $list.innerHTML = data.places
+      .map(place => `
+        <li class="place">
+          <span class="place-name">${place}<span>
+        </li>
+      `)
+      .join("");
     $button.primary.classList.remove("hidden");
     $button.primary.innerHTML = `
       <span class='book'>
@@ -48,8 +59,15 @@ const ui = {
       </span>
     `;
 
-    // For testing purposes
-    $main.innerHTML = `<p>${state.text}</p>`;
+    // Make the list sortable
+    const sortable = new Sortable.default($list, {
+      draggable: ".place"
+    });
+
+    sortable.on("sortable:start", () => console.log("sortable:start"));
+    sortable.on("sortable:sort", () => console.log("sortable:sort"));
+    sortable.on("sortable:sorted", () => console.log("sortable:sorted"));
+    sortable.on("sortable:stop", () => console.log("sortable:stop"));
   }
 };
 

@@ -10,7 +10,6 @@ function getEndpointFromResource(resource, params) {
   let endpoint = "";
   switch (resource) {
     case "/itinerary":
-    case "/itinerary/url":
       endpoint = "/itenary";
       break;
     default:
@@ -44,7 +43,8 @@ browser.tabs
             browser.runtime.sendMessage({
               type: "SUCCESS",
               payload: {
-                text: JSON.stringify(data),
+                text: "All good! Please book!", // TODO
+                data,
                 generate: false,
                 book: true
               }
@@ -62,9 +62,6 @@ browser.tabs
             });
           });
       } else if (message.type === "POST") {
-        console.log(
-          JSON.stringify({ url, places: JSON.parse(message.places) })
-        );
         fetch(getEndpointFromResource(message.resource), {
           method: "POST",
           headers: {
@@ -77,7 +74,8 @@ browser.tabs
             browser.runtime.sendMessage({
               type: "SUCCESS",
               payload: {
-                text: `Hello from the other side! ${JSON.stringify(data)}`,
+                text: `Hello from the other side!`,
+                data,
                 generate: false,
                 book: true
               }
@@ -88,8 +86,8 @@ browser.tabs
             browser.runtime.sendMessage({
               type: "SUCCESS",
               payload: {
-                text: error.message,
-                // "Oops ... an error occured, please try again!",
+                text:
+                  "Oops ... an error occured, please try again!",
                 generate: true,
                 book: false
               }
