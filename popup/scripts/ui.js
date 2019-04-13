@@ -12,7 +12,7 @@ const $button = {
 const ui = {
   loading: _ => {
     $loading.classList.remove("hidden");
-    $text.innerText = "";
+    $text.innerText = "Generating itinerary...";
     $list.innerHTML = "";
     $button.primary.classList.add("hidden");
     $button.secondary.classList.add("hidden");
@@ -31,7 +31,7 @@ const ui = {
     $button.primary.classList.remove("hidden");
     $button.primary.innerHTML = `
       <span class='generate'>
-        Generate
+        Scan
       </span>
     `;
   },

@@ -43,7 +43,7 @@ browser.tabs
             browser.runtime.sendMessage({
               type: "SUCCESS",
               payload: {
-                text: "All good! Please book!", // TODO
+                text: "Itinerary generated! Let’s review the itinerary!",
                 data,
                 generate: false,
                 book: true
@@ -55,7 +55,7 @@ browser.tabs
               type: "SUCCESS",
               payload: {
                 text:
-                  "Generate an itinerary that follows the blog you are reading!",
+                  "Generate a travel itinerary from the web page you browse!",
                 generate: true,
                 book: false
               }
@@ -86,8 +86,7 @@ browser.tabs
             browser.runtime.sendMessage({
               type: "SUCCESS",
               payload: {
-                text:
-                  "Oops ... an error occured, please try again!",
+                text: "Oops ... an error occured, please try again!",
                 generate: true,
                 book: false
               }

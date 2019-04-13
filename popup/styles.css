@@ -55,6 +55,9 @@ main {
       border: 1px solid var(--color-grey);
       text-transform: capitalize;
     }
+      main .list .place:hover {
+        cursor: grab;
+      }
       main .list .place .place-name {
         display: block;
         width: 100%;
