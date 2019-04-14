@@ -33,7 +33,6 @@ browser.runtime.onMessage.addListener(message => {
 document.addEventListener("click", e => {
   // Generate an itinerary
   if (e.target && e.target.classList.contains("generate")) {
-    console.log("generate");
     browser.tabs.query({ currentWindow: true, active: true }).then(tabs => {
       browser.tabs.sendMessage(tabs[0].id, {
         type: "generate"
@@ -44,7 +43,6 @@ document.addEventListener("click", e => {
 
   // Book an itinerary
   if (e.target && e.target.classList.contains("book")) {
-    console.log("book");
     const state = store.getState();
     window.open(
       `http://localhost:1234/?places=${state.data.places.join(",")}`,
@@ -54,7 +52,6 @@ document.addEventListener("click", e => {
 
   // Share an itinerary
   if (e.target && e.target.classList.contains("share")) {
-    console.log("share");
     const state = store.getState();
     copyTextToClipboard(
       `http://localhost:1234/?places=${state.data.places.join(",")}`

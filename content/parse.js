@@ -7,7 +7,6 @@ const h2 = [...document.querySelectorAll("h2")].map(h2 => h2.textContent);
 const h3 = [...document.querySelectorAll("h3")].map(h3 => h3.textContent);
 
 browser.runtime.onMessage.addListener(message => {
-  console.log({ message });
   if ((message.type = "generate")) {
     const textPlaces = nlp(text)
       .places()
@@ -38,8 +37,6 @@ browser.runtime.onMessage.addListener(message => {
       }, [])
       .sort((a, b) => a.weight < b.weight ? 1 : a.weight > b.weight ? -1 : 0)
       .map(place => place.normal.replace(/(^|\s)\S/g, l => l.toUpperCase()));
-
-    console.log({ places });
 
     // Send a request to save the itinerary
     browser.runtime.sendMessage({

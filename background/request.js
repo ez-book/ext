@@ -1,5 +1,3 @@
-console.log("request");
-
 const host = "http://127.0.0.1:5000";
 
 function getEndpointFromResource(resource, params) {
@@ -81,8 +79,7 @@ browser.tabs
               }
             });
           })
-          .catch(error => {
-            console.log({ error });
+          .catch(_ => {
             browser.runtime.sendMessage({
               type: "SUCCESS",
               payload: {

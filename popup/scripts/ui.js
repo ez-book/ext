@@ -63,11 +63,6 @@ const ui = {
     const sortable = new Sortable.default($list, {
       draggable: ".place"
     });
-
-    sortable.on("sortable:start", () => console.log("sortable:start"));
-    sortable.on("sortable:sort", () => console.log("sortable:sort"));
-    sortable.on("sortable:sorted", () => console.log("sortable:sorted"));
-    sortable.on("sortable:stop", () => console.log("sortable:stop"));
   }
 };
 
